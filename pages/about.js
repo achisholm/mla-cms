@@ -1,7 +1,7 @@
 import Layout from '../components/layout'
-import { attributes, html } from '../content/home.md'
+import { attributes, html } from '../content/about.md'
 
-const Home = () => (
+const About = () => (
   <Layout>
     <h1>{attributes.title}</h1>
     <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -14,4 +14,4 @@ const Home = () => (
   </Layout>
 )
 
-export default Home
+export default About

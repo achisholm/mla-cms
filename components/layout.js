@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/navbar.js";
 
+
 export default function Layout({
   children,
   title = "This is the default title",
@@ -26,6 +27,8 @@ export default function Layout({
             footer
         </div>
       </footer>
+
     </div>
   );
 }
+

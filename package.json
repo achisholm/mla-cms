@@ -1,24 +1,19 @@
 {
-  "name": "mla-cms",
+  "name": "with-netlify-cms",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "export": "npm run build && next export"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@mdx-js/loader": "^1.6.21",
-    "@next/mdx": "^10.0.2",
-    "gray-matter": "^4.0.2",
-    "next": "^10.0.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "next": "latest",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "frontmatter-markdown-loader": "^2.0.0"
+  }
 }
