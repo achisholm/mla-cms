@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params
 
-  const project = await import(`../../../content/projects/${slug}.md`).catch(
+  const project = await import(`../../content/projects/${slug}.md`).catch(
     () => null
   )
 
