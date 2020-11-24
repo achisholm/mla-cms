@@ -2,19 +2,94 @@ import fs from 'fs'
 import path from 'path'
 import Layout from '../../../components/layout'
 
+function TwoColumnImageBlock (props) {
+  return (
+    <div>
+      <p>This is the 2-column image block</p>
+      <img src={props.image1} />
+      <img src={props.image2} />
+    </div>
+  )
+}
+
+function ThreeColumnImageBlock (props) {
+  return (
+    <div>
+      <p>This is the 3-column image block</p>
+      <img src={props.image1} />
+      <img src={props.image2} />
+      <img src={props.image3} />
+    </div>
+  )
+}
+
+function CaptionVideoBlock (props) {
+  let platform = props.platform;
+  let embedCode
+  if (platform == "YouTube") {
+    embedCode = <div>Youtube embed code for {props.videoID} goes here</div>
+  } else if (platform == "Vimeo") {
+    embedCode = <div>Vimeo embed code for {props.videoID} goes here</div>
+  }
+
+  return (
+    <div>
+      <p>This is the Caption and Video Block</p>
+      <div>
+        <h2>{props.title}</h2>
+        <p>{props.body}</p>
+      </div>
+      <div>
+        {embedCode}
+      </div>
+    </div>
+  )
+}
+
 const Post = ({ blogpost }) => {
   if (!blogpost) return <div>not found</div>
 
   const { html, attributes } = blogpost
 
+  const blocksList = attributes.block.map(function(block) {
+
+      if (block.type == "2-column-image") {
+        return <TwoColumnImageBlock image1={block['image-1']} image2={block['image-2']}/>
+
+      } else if ("3-column-image") {
+        
+        return <ThreeColumnImageBlock 
+            image1={block['image-1']} 
+            image2={block['image-2']} 
+            image3={block['image-3']}
+          />
+
+      } else if ("caption-video") {
+        return <CaptionVideoBlock
+            captionTitle={block.title}
+            captionBody={block.body}
+            platform={block.platform}
+            videoId={block.videoId} 
+          />
+      }
+    
+  })
+
   return (
     <Layout>
+
       <article>
         <h1>{attributes.title}</h1>
         
         <img src={attributes.thumbnail} />
         
         <div dangerouslySetInnerHTML={{ __html: html }} />
+
+        <div>
+          Output the attributes.block object below:
+          {blocksList}
+        </div>
+
       </article>
 
       <style jsx>{`
@@ -43,7 +118,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // constrols whether not predefined paths should be processed on demand, check for more info: https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required
+    fallback: false, // controls whether not predefined paths should be processed on demand, check for more info: https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required
   }
 }
 
