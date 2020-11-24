@@ -77,7 +77,7 @@ collections:
             fields:
               - { label: 'Caption Title', name: 'title', widget: 'string', required: true}
               - { label: 'Caption Body', name: 'body', widget: 'markdown'}
-              - { label: 'Video ID', name: 'caption', widget: 'markdown', required: true}
+              - { label: 'Image', name: 'image', widget: 'image', required: true}
 
           - label: 'Image & Quote Block'
             name: 'image-quote'
