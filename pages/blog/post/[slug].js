@@ -38,11 +38,11 @@ function ThreeColumnImageBlock(props) {
 
 function CaptionImageBlock(props) {
   return (
-    <div>
-      <p>This is the Caption and Image Block</p>
+    <div style={{display:'flex'}}>
       <div>
-        <h2>{props.title}</h2>
-        <p>{props.body}</p>
+        <p>This is the Caption and Image Block</p>
+        <h2>{props.captionTitle}</h2>
+        <p>{props.captionBody}</p>
       </div>
       <div>
         <img src={props.image} />
@@ -61,11 +61,11 @@ function CaptionVideoBlock(props) {
   }
 
   return (
-    <div>
-      <p>This is the Caption and Video Block</p>
+    <div style={{display:'flex'}}>
       <div>
-        <h2>{props.title}</h2>
-        <p>{props.body}</p>
+        <p>This is the Caption and Video Block</p>
+        <h2>{props.captionTitle}</h2>
+        <p>{props.captionBody}</p>
       </div>
       <div>{embedCode}</div>
     </div>
