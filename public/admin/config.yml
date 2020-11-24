@@ -83,8 +83,8 @@ collections:
             name: 'image-quote'
             widget: 'object'
             fields:
-              - { label: 'Image', name: 'image', widget: 'image' required: true}
-              - { label: 'Quote', name: 'quote', widget: 'markdown' required: true}
+              - { label: 'Image', name: 'image', widget: 'image', required: true}
+              - { label: 'Quote', name: 'quote', widget: 'markdown', required: true}
               - { label: 'Quote Citation', name: 'citation', widget: 'string'}
  
   - label: 'Room'
