@@ -69,7 +69,7 @@ collections:
               - { label: 'Caption Title', name: 'title', widget: 'string', required: true}
               - { label: 'Caption Body', name: 'body', widget: 'markdown'}
               - { label: 'Hosting Platform', name: 'platform', widget: "select", options: ['YouTube', 'Vimeo'], default: ['YouTube'], required: true}
-              - { label: 'Video ID', name: 'id', widget: 'string', required: true}
+              - { label: 'Video ID', name: 'videoId', widget: 'string', required: true}
 
           - label: 'Caption & Image Block'
             name: 'caption-image'
