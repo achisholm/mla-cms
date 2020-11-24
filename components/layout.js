@@ -14,8 +14,7 @@ export default function Layout({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-
-        <link rel="stylesheet" href="/Styles/core.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/efe0zmx.css"/>
       </Head>
 
       <Navbar />
