@@ -60,7 +60,7 @@ collections:
             fields:
               - { label: 'Column 1 Image', name: 'image-1', widget: 'image', required: true }
               - { label: 'Column 2 Image', name: 'image-2', widget: 'image', required: true }
-              - { label: 'Column 2 Image', name: 'image-2', widget: 'image', required: true }
+              - { label: 'Column 3 Image', name: 'image-3', widget: 'image', required: true }
 
           - label: 'Caption & Video Block'
             name: 'caption-video'
