@@ -1,11 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-import Layout from '../../../components/layout'
+import Layout from '../../components/layout'
 
-const Post = ({ blogpost }) => {
-  if (!blogpost) return <div>not found</div>
+const Post = ({ project }) => {
+  if (!project) return <div>not found</div>
 
-  const { html, attributes } = blogpost
+  const { html, attributes } = project
 
   return (
     <Layout>
@@ -33,9 +33,9 @@ const Post = ({ blogpost }) => {
 
 export async function getStaticPaths() {
   const paths = fs
-    .readdirSync(path.join(process.cwd(), 'content/blogPosts'))
-    .map((blogName) => {
-      const trimmedName = blogName.substring(0, blogName.length - 3)
+    .readdirSync(path.join(process.cwd(), 'content/projects'))
+    .map((projectName) => {
+      const trimmedName = projectName.substring(0, projectName.length - 3)
       return {
         params: { slug: trimmedName },
       }
@@ -50,13 +50,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params
 
-  const blogpost = await import(`../../../content/blogPosts/${slug}.md`).catch(
+  const project = await import(`../../../content/projects/${slug}.md`).catch(
     () => null
   )
 
   return {
     props: {
-      blogpost: blogpost.default,
+      project: project.default,
     },
   }
 }

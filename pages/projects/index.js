@@ -20,7 +20,7 @@ const Projects = ({ projectsList }) => (
   <Layout>
     {projectsList.map((project) => (
       <div key={project.slug} className="project">
-        <Link href="/blog/project/[slug]" as={`/projects/${project.slug}`}>
+        <Link href="/projects/[slug]" as={`/projects/${project.slug}`}>
           <a>
             <img src={project.attributes.thumbnail} />
             <h2>{project.attributes.title}</h2>
