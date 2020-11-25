@@ -1,35 +1,34 @@
 import Link from 'next/link'
 import Layout from '../../components/layout'
 
-const importBlogPosts = async () => {
-  // https://webpack.js.org/guides/dependency-management/#requirecontext
+const importRooms = async () => {
   const markdownFiles = require
-    .context('../../content/blogPosts', false, /\.md$/)
+    .context('../../content/rooms', false, /\.md$/)
     .keys()
     .map((relativePath) => relativePath.substring(2))
 
   return Promise.all(
     markdownFiles.map(async (path) => {
-      const markdown = await import(`../../content/blogPosts/${path}`)
+      const markdown = await import(`../../content/rooms/${path}`)
       return { ...markdown, slug: path.substring(0, path.length - 3) }
     })
   )
 }
 
-const Blog = ({ postsList }) => (
+const Rooms = ({ roomsList }) => (
   <Layout>
-    {postsList.map((post) => (
-      <div key={post.slug} className="post">
-        <Link href="/blog/post/[slug]" as={`/blog/post/${post.slug}`}>
+    {roomsList.map((room) => (
+      <div key={room.slug} className="room">
+        <Link href="/rooms/[slug]" as={`/rooms/${room.slug}`}>
           <a>
-            <img src={post.attributes.thumbnail} />
-            <h2>{post.attributes.title}</h2>
+            <img src={room.attributes.thumbnail} />
+            <h2>{room.attributes.title}</h2>
           </a>
         </Link>
       </div>
     ))}
     <style jsx>{`
-      .post {
+      .room {
         text-align: center;
       }
       img {
@@ -41,13 +40,13 @@ const Blog = ({ postsList }) => (
 )
 
 export async function getStaticProps() {
-  const postsList = await importBlogPosts()
+  const roomsList = await importRooms()
 
   return {
     props: {
-      postsList,
+      roomsList,
     }, // will be passed to the page component as props
   }
 }
 
-export default Blog
+export default Rooms

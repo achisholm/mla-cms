@@ -1,0 +1,26 @@
+.contentBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    @media (min-width: 800px) {
+        flex-direction: row;
+    }
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: white;
+    width: 33.333%;
+    padding: 30px;
+
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    &__body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+}

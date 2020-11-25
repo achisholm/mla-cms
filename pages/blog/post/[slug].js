@@ -1,76 +1,12 @@
 import fs from "fs";
 import path from "path";
 import Layout from "../../../components/layout";
+import TwoColumnImageBlock from "../../../components/content-blocks/TwoColumnImageBlock";
+import ThreeColumnImageBlock from "../../../components/content-blocks/ThreeColumnImageBlock";
+import CaptionImageBlock from "../../../components/content-blocks/CaptionImageBlock";
+import CaptionVideoBlock from "../../../components/content-blocks/CaptionVideoBlock";
 
-function TwoColumnImageBlock(props) {
-  return (
-    <div>
-      <p>This is the 2-column image block</p>
-      <img src={props.image1} />
-      <img src={props.image2} />
-
-      <style jsx>{`
-        img {
-          border: 1px solid red;
-        }
-      `}</style>
-    </div>
-  
-  );
-}
-
-function ThreeColumnImageBlock(props) {
-  return (
-    <div>
-      <p>This is the 3-column image block</p>
-      <img src={props.image1} />
-      <img src={props.image2} />
-      <img src={props.image3} />
-      
-      <style jsx>{`
-        img {
-          border: 1px solid blue;
-        }
-      `}</style>
-    </div>
-  );
-}
-
-function CaptionImageBlock(props) {
-  return (
-    <div style={{display:'flex'}}>
-      <div>
-        <p>This is the Caption and Image Block</p>
-        <h2>{props.captionTitle}</h2>
-        <p>{props.captionBody}</p>
-      </div>
-      <div>
-        <img src={props.image} />
-      </div>
-    </div>
-  );
-}
-
-function CaptionVideoBlock(props) {
-  let platform = props.platform;
-  let embedCode;
-  if (platform == "YouTube") {
-    embedCode = <div>Youtube embed code for {props.videoId} goes here</div>;
-  } else if (platform == "Vimeo") {
-    embedCode = <div>Vimeo embed code for {props.videoId} goes here</div>;
-  }
-
-  return (
-    <div style={{display:'flex'}}>
-      <div>
-        <p>This is the Caption and Video Block</p>
-        <h2>{props.captionTitle}</h2>
-        <p>{props.captionBody}</p>
-      </div>
-      <div>{embedCode}</div>
-    </div>
-  );
-}
+import styles from '../../../styles/article.module.scss'
 
 const Post = ({ blogpost }) => {
   if (!blogpost) return <div>not found</div>;
@@ -119,27 +55,16 @@ const Post = ({ blogpost }) => {
 
   return (
     <Layout>
-      <article>
-        <h1>{attributes.title}</h1>
+      <header className={styles.header}>
+        <h1 className={styles.h1}>{attributes.title}</h1>
+        <div className={styles.intro} dangerouslySetInnerHTML={{ __html: html }} />
+      </header>
 
-        <img src={attributes.thumbnail} />
-
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-
-        {blocksList}
-
-      </article>
-
-      <style jsx>{`
-        article {
-          margin: 0 auto;
-        }
-        h1 {
-          font-weight: bold;
-          padding: 3em 0;
-          text-align: center;
-        }
-      `}</style>
+      <div className={styles.contentBlocks}>
+        <div className="container">
+          {blocksList}
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -156,7 +81,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // controls whether not predefined paths should be processed on demand, check for more info: https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required
+    fallback: false,
   };
 }
 
