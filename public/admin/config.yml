@@ -3,6 +3,10 @@ backend:
   branch: master
 media_folder: public/static/img
 public_folder: /static/img
+site_url: https://mla-cms.netlify.app
+display_url: https://mla-cms.netlify.app
+logo_url: https://mla-cms.netlify.app/static/img/knightsbridge-logo.svg
+
 slug:
   encoding: 'ascii'
   clean_accents: true
